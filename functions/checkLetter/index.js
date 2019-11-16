@@ -1,5 +1,5 @@
 const checkLetter = require("./checkLetter");
-const getFullDictionary = require("./getFullDictionary");
+const getFullDictionary = require("../util/getFullDictionary");
 
 module.exports.handler = async ({ body }) => {
   const {

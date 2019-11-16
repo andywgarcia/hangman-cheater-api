@@ -15,12 +15,12 @@ functions:
       - http:
           path: checkLetter
           method: post
-  getInitialWord:
-    handler: functions/getInitialWord/index.handler
+  generateInitialWord:
+    handler: functions/generateInitialWord/index.handler
     description: Chooses a random word from the dictionary
     events:
       - http:
-          path: getInitialWord
-          method: get
+          path: generateInitialWord
+          method: post
 plugins:
   - serverless-offline
