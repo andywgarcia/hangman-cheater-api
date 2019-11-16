@@ -4,7 +4,7 @@
   "description": "",
   "main": "serverless.yml",
   "scripts": {
-    "test": "npm run test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",

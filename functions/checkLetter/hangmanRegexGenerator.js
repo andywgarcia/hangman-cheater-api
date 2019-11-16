@@ -1,5 +1,8 @@
-module.exports = hangmanString => {
-  const stringRegex = generateRegexPatternForString;
+module.exports = (hangmanString, excludedLettersArray = null) => {
+  const stringRegex = generateRegexPatternForString(
+    hangmanString,
+    excludedLettersArray
+  );
   return new RegExp(stringRegex, [regexFlags.caseInsensitive].join(""));
 };
 
@@ -11,16 +14,17 @@ const regexFlags = {
 
 const generateRegexPatternForString = (
   hangmanString,
-  excludedLetters = null
+  excludedLettersArray = null
 ) => {
+  console.log("Hangman String: ", hangmanString);
   const charArray = [...hangmanString];
   const stringRegex = charArray.reduce((regex, char) => {
     return regex + generateRegexForChar(char);
   }, "");
-  if (!excludedLetters) {
+  if (!excludedLettersArray || excludedLettersArray.length === 0) {
     return stringRegex;
   }
-  return `((?!.*[${excludedLetters.join("")}].*))(${stringRegex})`;
+  return `((?!.*[${excludedLettersArray.join("")}].*))(${stringRegex})`;
 };
 
 const generateRegexForChar = character => {

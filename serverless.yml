@@ -6,21 +6,19 @@ provider:
   runtime: nodejs10.x
   stage: ${opt:stage, 'dev'}
   region: ${opt:region, 'us-west-2'}
-  runtime: nodejs10.x
-
 
 functions:
-  generatePossibleWords:
-    handler: functions/generatePossibleWords/index.handler
+  checkLetter:
+    handler: functions/checkLetter/index.handler
     description: Gets the possible words given a dictionary and a hangman string (ex. do?ble where question mark is unresolved characters)
     events:
       - http:
-          path: generatePossibleWords
+          path: checkLetter
           method: post
   getInitialWord:
-    handler: functions/GetInitialWord/index.handler
+    handler: functions/getInitialWord/index.handler
     description: Chooses a random word from the dictionary
-    events: 
+    events:
       - http:
           path: getInitialWord
           method: get
