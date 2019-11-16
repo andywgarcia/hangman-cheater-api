@@ -1,0 +1,28 @@
+service:
+  name: hangman-cheater-api
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-west-2'}
+  runtime: nodejs10.x
+
+
+functions:
+  generatePossibleWords:
+    handler: functions/generatePossibleWords/index.handler
+    description: Gets the possible words given a dictionary and a hangman string (ex. do?ble where question mark is unresolved characters)
+    events:
+      - http:
+          path: generatePossibleWords
+          method: post
+  getInitialWord:
+    handler: functions/GetInitialWord/index.handler
+    description: Chooses a random word from the dictionary
+    events: 
+      - http:
+          path: getInitialWord
+          method: get
+plugins:
+  - serverless-offline
