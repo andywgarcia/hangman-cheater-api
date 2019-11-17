@@ -26,3 +26,4 @@ We'll be looking to see if we understand your code, if it shows good development
 ## Notes
 
 - This is not a standalone solution. It is intended to be used by the web application
+- The path to my dictionary was `/usr/share/dict/words`, but yours may not be the same and will therefore fail to load at startup. If yours needs to be changed for testing, then modify the file `src/functions/util/defaultDictionaryPath.js` to match it to yours

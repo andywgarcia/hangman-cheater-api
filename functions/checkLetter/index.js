@@ -1,5 +1,6 @@
 const checkLetter = require("./checkLetter");
 const getFullDictionary = require("../util/getFullDictionary");
+const defaultDictionaryPath = require("../util/defaultDictionaryPath");
 
 module.exports.handler = async ({ body }) => {
   const {
@@ -11,7 +12,7 @@ module.exports.handler = async ({ body }) => {
     dictionaryLocation
   } = JSON.parse(body);
   const listOfWords =
-    words || getFullDictionary(dictionaryLocation || "/usr/share/dict/words");
+    words || getFullDictionary(dictionaryLocation || defaultDictionaryPath);
 
   const result = checkLetter(
     listOfWords,

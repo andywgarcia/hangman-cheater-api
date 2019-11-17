@@ -1,4 +1,4 @@
 module.exports = {
   verbose: true,
-  collectCoverageFrom: ["**/*.{js,jsx}", "!**/node_modules/**", "!**/vendor/**"]
+  collectCoverageFrom: ["**/*.{js}", "!**/node_modules/**"]
 };
