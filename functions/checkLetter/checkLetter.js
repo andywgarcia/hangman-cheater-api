@@ -6,8 +6,13 @@ module.exports = (
   hangmanString,
   letterToCheck,
   answer,
-  excludedLetters = []
+  alreadyGuessedCharacters = []
 ) => {
+  const excludedLetters = alreadyGuessedCharacters.filter(character => {
+    console.log("hangmanString: ", hangmanString);
+    return !hangmanString.includes(character);
+  });
+
   const possibleWords = filterDictionary(listOfWords, hangmanString, [
     ...excludedLetters,
     letterToCheck

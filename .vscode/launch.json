@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Start Local Server",
       "program": "${workspaceFolder}/node_modules/serverless/bin/serverless",
-      "args": ["offline", "start"]
+      "args": ["offline", "start", "--port", "3001"]
     }
   ]
 }

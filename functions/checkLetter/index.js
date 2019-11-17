@@ -6,7 +6,7 @@ module.exports.handler = async ({ body }) => {
     hangmanString,
     guessedLetter,
     answer,
-    excludedLetters,
+    alreadyGuessLetters,
     words,
     dictionaryLocation
   } = JSON.parse(body);
@@ -18,7 +18,7 @@ module.exports.handler = async ({ body }) => {
     hangmanString,
     guessedLetter,
     answer,
-    excludedLetters
+    alreadyGuessLetters
   );
   return GenerateSuccess(result);
 };
