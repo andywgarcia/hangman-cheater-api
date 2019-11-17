@@ -4,7 +4,8 @@
   "description": "",
   "main": "serverless.yml",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node_modules/.bin/sls offline --port 3001"
   },
   "repository": {
     "type": "git",
