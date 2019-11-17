@@ -50,7 +50,7 @@ describe("Check letter", () => {
       alreadyGuessedLetters
     );
     expect(result.possibleWords.length).toBeGreaterThan(0);
-    expect(result.isLetterSuccessful).toBeFalsy();
-    expect(result.possibleWords).toStrictEqual(["doable", "double"]);
+    expect(result.isLetterSuccessful).toBeTruthy();
+    expect(result.possibleWords).toStrictEqual(["double", "doable"]);
   });
 });

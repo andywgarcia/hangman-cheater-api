@@ -6,7 +6,7 @@ module.exports = (hangmanString, excludedLettersArray = null) => {
   return new RegExp(stringRegex, [regexFlags.caseInsensitive].join(""));
 };
 
-// ((?!.*[].*))([a-z][a][r][a-z][a-z][a-z][a-z][a-z])
+// ((?!.*[].*))([a-z][a-z][a-z][a-z][a-z])
 
 const regexFlags = {
   caseInsensitive: "i"
@@ -18,8 +18,12 @@ const generateRegexPatternForString = (
 ) => {
   console.log("Hangman String: ", hangmanString);
   const charArray = [...hangmanString];
+  const successfulCharacters = [...hangmanString].filter(
+    character => character !== "?"
+  );
+  console.log("Successful Characters: ", successfulCharacters);
   const stringRegex = charArray.reduce((regex, char) => {
-    return regex + generateRegexForChar(char);
+    return regex + generateRegexForChar(char, successfulCharacters);
   }, "");
   if (!excludedLettersArray || excludedLettersArray.length === 0) {
     return stringRegex;
@@ -27,9 +31,12 @@ const generateRegexPatternForString = (
   return `((?!.*[${excludedLettersArray.join("")}].*))(${stringRegex})`;
 };
 
-const generateRegexForChar = character => {
+const generateRegexForChar = (character, successfulCharacters = []) => {
   if (character === "?") {
-    return "[a-z]";
+    if (successfulCharacters.length > 0) {
+      return `((?![${successfulCharacters.join("")}])[a-z])`;
+    }
+    return `[a-z]`;
   }
   return `[${character.toLowerCase()}]`;
 };

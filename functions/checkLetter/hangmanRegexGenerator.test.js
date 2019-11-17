@@ -75,7 +75,7 @@ describe("Hangman Regex Generator", () => {
       const generatedRegex = regexGenerator.generateRegexPatternForString(
         "?ell?"
       );
-      expect(generatedRegex).toBe("[a-z][e][l][l][a-z]");
+      expect(generatedRegex).toBe("((?![ell])[a-z])[e][l][l]((?![ell])[a-z])");
     });
 
     test("Generates string regex with empty array of exclusions", () => {
@@ -83,7 +83,7 @@ describe("Hangman Regex Generator", () => {
         "?ell?",
         []
       );
-      expect(generatedRegex).toBe("[a-z][e][l][l][a-z]");
+      expect(generatedRegex).toBe("((?![ell])[a-z])[e][l][l]((?![ell])[a-z])");
     });
 
     test("Generates string regex with exclusions", () => {
@@ -91,7 +91,9 @@ describe("Hangman Regex Generator", () => {
         "?ell?",
         ["a"]
       );
-      expect(generatedRegex).toBe("((?!.*[a].*))([a-z][e][l][l][a-z])");
+      expect(generatedRegex).toBe(
+        "((?!.*[a].*))(((?![ell])[a-z])[e][l][l]((?![ell])[a-z]))"
+      );
     });
   });
 });
